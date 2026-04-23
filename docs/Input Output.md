@@ -1,0 +1,35 @@
+<table>
+	<tr>
+		<th colspan="3">I/O</th>
+	<tr>
+		<td>Address</td>
+		<td>32</td>
+		<td>O</td>
+	</tr>
+	<tr>
+		<td>Data</td>
+		<td>32</td>
+		<td>I/O</td>
+	</tr>
+	<tr>
+		<td>Interrupt</td>
+		<td>1</td>
+		<td>I</td>
+	</tr>
+	<tr>
+		<td>Non-maskable Interrupt</td>
+		<td>1</td>
+		<td>I</td>
+	</tr>
+	<tr>
+		<td>Read/Write</td>
+		<td>1</td>
+		<td>O</td>
+	</tr>
+	<tr>
+		<td>Enabled</td>
+		<td>1</td>
+		<td>I</td>
+	</tr>
+</table>
+
