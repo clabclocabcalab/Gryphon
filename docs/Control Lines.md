@@ -1,0 +1,12 @@
+- PC(register[1]) to address
+- data to instruction register and increment PC
+- reset step counter
+- register[B] or immediate to address
+- data to register[A]
+- register[B] or immediate to register[A]
+- register[B] or immediate to upper 16 bits of register[A] without affecting lower
+- register[A] to data and rw to 1
+- register[B] or immediate to PC if register[A] zero else no change
+- register[B] or immediate to PC if register[A] negative else no change
+- register[B] or immediate to carry
+- register[B] or immediate to interrupt enabled

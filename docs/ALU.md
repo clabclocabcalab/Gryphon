@@ -8,31 +8,31 @@
 	</tr>
 	<tr>
 		<th>-00</th>
-		<td></td>
-		<td>And</td>
 		<td>Add</td>
 		<td>Multiply High Signed</td>
+		<td>And</td>
+		<td></td>
 	</tr>
 	<tr>
 		<th>-01</th>
-		<td></td>
-		<td>Or</td>
 		<td>Subtract</td>
 		<td>Logical Shift Right</td>
+		<td>Or</td>
+		<td></td>
 	</tr>
 	<tr>
 		<th>-10</th>
-		<td></td>
-		<td>Exclusive Or</td>
 		<td>Multiply</td>
 		<td>Logical Shift Left</td>
+		<td>Exclusive Or</td>
+		<td></td>
 	</tr>
 	<tr>
 		<th>-11</th>
-		<td></td>
-		<td>Not</td>
 		<td>Multiply High Unsigned</td>
 		<td>Arithmetic Shift Right</td>
+		<td>Not</td>
+		<td></td>
 	</tr>
 </table>
 
