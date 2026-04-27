@@ -47,6 +47,8 @@ int main(int argc, char** argv) {
                 interrupt = 1;
             }
         }
+        // printw("%d:%d\n", address, data);
+        // refresh();
         reset = 0;
     } while (key != 27);
 

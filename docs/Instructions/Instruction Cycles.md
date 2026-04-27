@@ -5,7 +5,7 @@ General:
 4. reset step counter
 
 Break:
-1. Trigger interrupt but jump to different vector
+1. Trigger interrupt but jump to break vector
 
 Load:
 1. register[B] or immediate to address
@@ -21,10 +21,10 @@ Store:
 1. register[B] or immediate to address, register[A] to data, rw to 1
 
 Branch Zero:
-1. register[B] or immediate to PC if register[A] zero else no change
+1. register[B] or immediate offset to PC if register[A] zero else no change
 
 Branch Negative:
-1. register[B] or immediate to PC if register[A] negative else no change
+1. register[B] or immediate offset to PC if register[A] negative else no change
 
 Set Carry:
 1. register[B] or immediate to carry

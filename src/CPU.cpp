@@ -9,6 +9,7 @@ uint8_t CPU::next(uint32_t* address, uint32_t* data, uint8_t i, uint8_t nmi, uin
     uint8_t regC = BIT_TEST(instruction, 0, 0x1F);
     uint16_t immediate = BIT_TEST(instruction, 5, 0xFFFF);
     uint32_t boi = imIns ? immediate : registers[regB];
+    uint32_t boo = imIns ? alu.execute(0, registers[1], immediate) : registers[regB];
     uint16_t control = 0;
     if (r) {
         interrupt = 0x80;
@@ -53,13 +54,14 @@ uint8_t CPU::next(uint32_t* address, uint32_t* data, uint8_t i, uint8_t nmi, uin
             interrupt = 0x83;
             intEnable = 0;
         }
-        if (BIT_TEST(control, 2, 1)) *address = boi;
+        if (BIT_TEST(control, 2, 1)) *address = boo;
         if (BIT_TEST(control, 3, 1) && regA) registers[regA] = *data;
         if (BIT_TEST(control, 4, 1) && regA) registers[regA] = boi;
         if (BIT_TEST(control, 5, 1) && regA) registers[regA] = (boi << 16) | (registers[regA] & 0xFFFF);
         if (BIT_TEST(control, 6, 1)) *data = registers[regA];
-        if (BIT_TEST(control, 7, 1) && registers[regA] == 0) registers[1] = boi;
-        if (BIT_TEST(control, 8, 1) && registers[regA] >> 31) registers[1] = boi;
+        if ((BIT_TEST(control, 7, 1) && registers[regA] == 0) || 
+            (BIT_TEST(control, 8, 1) && registers[regA] >> 31))
+            registers[1] = boo;
         if (BIT_TEST(control, 9, 1)) carry = boi & 1;
         if (BIT_TEST(control, 10, 1)) intEnable = boi & 1;
     }
