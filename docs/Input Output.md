@@ -31,5 +31,10 @@
 		<td>1</td>
 		<td>I</td>
 	</tr>
+	<tr>
+		<td>Reset</td>
+		<td>1</td>
+		<td>I</td>
+	</tr>
 </table>
 

@@ -8,18 +8,20 @@ using namespace std;
 void fillFromFile(uint32_t array[], char filename[]);
 
 int main(int argc, char** argv) {
-    WINDOW* win = initscr();
+    initscr();
     cbreak();
     noecho();
     nodelay(stdscr, TRUE);
     keypad(stdscr, TRUE);
-    scrollok(win, TRUE);
+    scrollok(stdscr, TRUE);
+    refresh();
 
     CPU cpu;
     uint32_t address = 0;
     uint32_t data = 0;
 
     uint8_t interrupt = 0;
+    uint8_t reset = 1;
 
     uint32_t ROM[0x1000];
     fillFromFile(ROM, argv[1]);
@@ -27,7 +29,7 @@ int main(int argc, char** argv) {
 
     int key = 0;
     do {
-        if (cpu.next(&address, &data, interrupt, 0)) {
+        if (cpu.next(&address, &data, interrupt, 0, reset)) {
             if (address < 0x1000) continue;
             else if (address == 0x1000) { printw("%c", (char)data); refresh(); }
             else if (address == 0x1001) interrupt = 0;
@@ -45,6 +47,7 @@ int main(int argc, char** argv) {
                 interrupt = 1;
             }
         }
+        reset = 0;
     } while (key != 27);
 
     endwin();

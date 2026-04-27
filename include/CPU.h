@@ -7,7 +7,7 @@
 
 class CPU {
     public:
-        uint8_t next(uint32_t* address, uint32_t* data, uint8_t i, uint8_t nmi); // returns r/w
+        uint8_t next(uint32_t* address, uint32_t* data, uint8_t i, uint8_t nmi, uint8_t r); // returns r/w
     private:
         ALU alu;
         uint32_t instruction = 0;
@@ -19,10 +19,13 @@ class CPU {
         uint8_t carry = 0;
         uint8_t intEnable = 0;
         uint8_t interrupt = 0;
+        uint8_t nmInterrupt = 0;
+        uint8_t reset = 1;
+        uint8_t intVector = 0;
 
         static inline uint16_t decoder[] = { 
-            0b1, 0b1, 0b1, 0b1, 0b10, 0b101, 0b1001, 0b1, 0b10001, 0b1, 0b100011, 0b1, 
-            0b1000001, 0b1, 0b10000001, 0b1, 0b100000001, 0b1, 0b1000000001, 0b1, 0b1, 0b1, 
+            0b1, 0b1, 0b11, 0b1, 0b100, 0b1001, 0b10001, 0b1, 0b100001, 0b1, 0b1000101, 0b1, 
+            0b10000001, 0b1, 0b100000001, 0b1, 0b1000000001, 0b1, 0b10000000001, 0b1, 0b1, 0b1, 
             0b1, 0b1, 0b1, 0b1, 0b1, 0b1, 0b1, 0b1, 0b1, 0b1
         };
 };

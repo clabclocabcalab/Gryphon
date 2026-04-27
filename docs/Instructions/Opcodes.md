@@ -11,7 +11,7 @@
 	</tr>
 	<tr>
 		<th>-1</th>
-		<td>Halt</td>
+		<td>Break</td>
 		<td>Subtract</td>
 	</tr>
 	<tr>
@@ -99,7 +99,7 @@
 	</tr>
 	<tr>
 		<th>-1</th>
-		<td>Halt</td>
+		<td>Break</td>
 		<td>Subtract</td>
 	</tr>
 	<tr>

@@ -4,6 +4,9 @@ General:
 3. (Instruction specific)
 4. reset step counter
 
+Break:
+1. Trigger interrupt but jump to different vector
+
 Load:
 1. register[B] or immediate to address
 2. data to register[A]
