@@ -88,7 +88,7 @@
 
 <table>
 	<tr>
-		<th>R</th>
+		<th>I</th>
 		<th>0x0-</th>
 		<th>0x1-</th>
 	</tr>

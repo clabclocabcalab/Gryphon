@@ -1,6 +1,7 @@
 #include <iostream>
 #include <ncurses.h>
 #include <fstream>
+#include <unistd.h>
 #include "CPU.h"
 
 using namespace std;
@@ -47,8 +48,6 @@ int main(int argc, char** argv) {
                 interrupt = 1;
             }
         }
-        // printw("%d:%d\n", address, data);
-        // refresh();
         reset = 0;
     } while (key != 27);
 
@@ -62,14 +61,17 @@ void fillFromFile(uint32_t array[], char filename[]) {
 		cout << "Error: file not found" << endl;
 		return;
 	}
-
 	int size = file.tellg();
 	file.seekg(0);
 	char buffer[size];
 	file.read(buffer, size);
 	size /= 4;
 	for (int i = 0; i < size; i++) {
-		array[i] = (buffer[i * 4] << 24) | (buffer[i * 4 + 1] << 16) | (buffer[i * 4 + 2] << 8) | buffer[i * 4 + 3];
+        int a = 0;
+        for (int j = 0; j < 4; j++) {
+            a |= (uint8_t)buffer[i * 4 + j] << (24 - (j * 8));
+        }
+		array[i] = a; 
 	}
 	file.close();
 }
