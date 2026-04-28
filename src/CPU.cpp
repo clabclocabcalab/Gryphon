@@ -46,7 +46,7 @@ uint8_t CPU::next(uint32_t* address, uint32_t* data, uint8_t i, uint8_t nmi, uin
         }
     }
     else if (BIT_TEST(instruction, 30, 1)) {
-        registers[regC] = alu.execute(opcode & 0xF, registers[regA], boi, &carry);
+        registers[regA] = alu.execute(opcode & 0xF, registers[regC], boi, &carry);
     }
     else {
         control = decoder[(opcode << 1) | (step & 1)];
@@ -58,9 +58,9 @@ uint8_t CPU::next(uint32_t* address, uint32_t* data, uint8_t i, uint8_t nmi, uin
         if (BIT_TEST(control, 3, 1) && regA) registers[regA] = *data;
         if (BIT_TEST(control, 4, 1) && regA) registers[regA] = boi;
         if (BIT_TEST(control, 5, 1) && regA) registers[regA] = (boi << 16) | (registers[regA] & 0xFFFF);
-        if (BIT_TEST(control, 6, 1)) *data = registers[regA];
-        if ((BIT_TEST(control, 7, 1) && registers[regA] == 0) || 
-            (BIT_TEST(control, 8, 1) && registers[regA] >> 31))
+        if (BIT_TEST(control, 6, 1)) *data = registers[regC];
+        if ((BIT_TEST(control, 7, 1) && registers[regC] == 0) || 
+            (BIT_TEST(control, 8, 1) && registers[regC] >> 31))
             registers[1] = boo;
         if (BIT_TEST(control, 9, 1)) carry = boi & 1;
         if (BIT_TEST(control, 10, 1)) intEnable = boi & 1;
