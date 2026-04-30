@@ -4,8 +4,8 @@ LOD rA (rB/im): Load value at address from im offset or rB into rA
 MOV rA (rB/im): Move im or rB to rA
 MVU rA (rB/im): Move im or rB to upper half of rA
 STR (rB/im) rC: Store rC to address from im offset or rB
-BRZ rC (rB/im): Branch if rC zero to address from im offset or rB
-BRN rC (rB/im): Branch if rC negative to address from im offset or rB
+BRZ (rB/im) rC: Branch if rC zero to address from im offset or rB
+BRN (rB/im) rC: Branch if rC negative to address from im offset or rB
 SEC (rB/im): Set carry to (rB/im)
 SIE (rB/im): Set interrupt enabled to (rB/im)
 ADD rA (rB/im) rC: Add (rB/im) to rC and put result in rA

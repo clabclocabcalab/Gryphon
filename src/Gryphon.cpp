@@ -69,7 +69,7 @@ void fillFromFile(uint32_t array[], char filename[]) {
 	for (int i = 0; i < size; i++) {
         int a = 0;
         for (int j = 0; j < 4; j++) {
-            a |= (uint8_t)buffer[i * 4 + j] << (24 - (j * 8));
+            a |= (uint8_t)buffer[i * 4 + j] << (j * 8);
         }
 		array[i] = a; 
 	}
