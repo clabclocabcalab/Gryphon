@@ -9,7 +9,7 @@ uint8_t CPU::next(uint32_t* address, uint32_t* data, uint8_t i, uint8_t nmi, uin
     uint8_t regC = BIT_TEST(instruction, 0, 0x1F);
     uint16_t immediate = BIT_TEST(instruction, 5, 0xFFFF);
     uint32_t boi = imIns ? immediate : registers[regB];
-    uint32_t boo = imIns ? registers[1] + immediate : registers[regB];
+    uint32_t boo = imIns ? registers[1] + (int16_t)immediate : registers[regB];
     uint16_t control = 0;
     if (r) {
         interrupt = 0x80;
@@ -47,6 +47,7 @@ uint8_t CPU::next(uint32_t* address, uint32_t* data, uint8_t i, uint8_t nmi, uin
     }
     else if (BIT_TEST(instruction, 30, 1)) {
         registers[regA] = alu.execute(opcode & 0xF, registers[regC], boi, &carry);
+        control |= 1;
     }
     else {
         control = decoder[(opcode << 1) | (step & 1)];
